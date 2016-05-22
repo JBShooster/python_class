@@ -12,8 +12,6 @@ print "A loop that prints decimal equivalents..."
 for x in xrange(1,11):
   print "1/%d converted to decimal is: " % x, 1.0 / x
 
-
-# I tried breaking this one every which way! It's our while-loop
 print"\nNow a function that counts down from a user-selected, positive integer"
 def get_num():
   valid = False
@@ -32,15 +30,12 @@ def get_num():
     except (NameError, TypeError, ValueError, SyntaxError):
       print "That's not a valid integer"
 
-
 def countdown(n):
   back_count = range(n,0,-1)
   for x in back_count:
     print x
 
-#Now for that for_loop for exponentials
 def get_exp_and_base():
-  #This helps us cover our edge cases
   invalid = True
   while invalid:
     try:
@@ -55,13 +50,10 @@ def get_exp_and_base():
         print "Negative number. Tsk tsk... "
     except (NameError, ValueError, TypeError, SyntaxError):
         print "That's not a valid integer"
-  #This is our exponential loop logic here!
   for x in xrange(1,base + 1):
     print x, " ** %d =" % exp, x ** exp
 
-#Divide by two
 def div_by_two():
-  #This helps us cover our edge cases
   invalid = True
   while invalid == True:
     try:
@@ -79,7 +71,6 @@ def div_by_two():
     except (NameError, ValueError, TypeError, SyntaxError):
       print "That's not a valid integer"
 
-#Call our functions
 get_num()
 get_exp_and_base()
 div_by_two()
