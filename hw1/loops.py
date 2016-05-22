@@ -34,41 +34,42 @@ def get_num():
 
 
 def countdown(n):
-  while n > 0:
-    print n
-    n -= 1
+  back_count = range(n,0,-1)
+  for x in back_count:
+    print x
 
 #Now for that for_loop for exponentials
 def get_exp_and_base():
   #This helps us cover our edge cases
-  valid = False
-  while valid == False:
+  invalid = True
+  while invalid:
     try:
       print "\nLet's do an exponent."
       base = input("What is your base? : ")
       exp = input("What is your exponent? : ")
-      if (base > 0) & (exp > 0):
-        valid = True
-      elif(base == 0) | (exp == 0):
+      if base > 0 and exp > 0:
+        invalid = False
+      elif base == 0 or exp == 0:
         print "Zero? Really?"
       else:
         print "Negative number. Tsk tsk... "
     except (NameError, ValueError, TypeError, SyntaxError):
         print "That's not a valid integer"
-  #This is our FOR logic here!
+  #This is our exponential loop logic here!
   for x in xrange(1,base + 1):
     print x, " ** %d =" % exp, x ** exp
 
 #Divide by two
 def div_by_two():
   #This helps us cover our edge cases
-  valid = False
-  while valid == False:
+  invalid = True
+  while invalid == True:
     try:
       num = input("Give me something divisible by two: ")
       if num % 2 == 0:
         print "Yas! Divisible by two!"
-        valid = True
+        #Hey! The homework did ask for it to be witty. Right?
+        invalid = False
       elif num == 0:
         print "Oh gosh... Not these zeroes again... "
       elif num % 2 != 0:

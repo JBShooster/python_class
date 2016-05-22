@@ -48,15 +48,16 @@ print "Now let's demonstrate how we could get user input...."
 
 print "********** Exercise 1.4 **********"
 
-first_name = raw_input("Enter your first name: ")
-last_name = raw_input("Enter your last name: ")
-dob = raw_input("Enter your date of birth: ")
-month = raw_input("Month? ")
-day = input("Day? ")
-year = input("Year? ")
+def get_info():
+  first_name = raw_input("Enter your first name: ")
+  last_name = raw_input("Enter your last name: ")
+  dob = raw_input("Enter your date of birth: ")
+  month = raw_input("Month? ")
+  day = input("Day? ")
+  year = input("Year? ")
+  print"""
+  You are %s %s. You date of birth is %s.
+  The month is %s. Day is %d. Year is %d.
+  """ % (first_name, last_name, dob, month, day, year)
 
-print"""
-You are %s %s. You date of birth is %s.
-The month is %s. Day is %d. Year is %d.
-""" % (first_name, last_name, dob, month, day, year)
-
+get_info()

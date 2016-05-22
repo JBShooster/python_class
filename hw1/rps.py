@@ -23,7 +23,7 @@ possible_choices = ['rock', 'paper', 'scissors']
 player_choices = ["", ""]
 
 def player_one_choose():
-  choice = raw_input(player_one + ". Rock, paper or scissors?")
+  choice = raw_input(player_one + ". Rock, paper or scissors?: ")
   if choice not in possible_choices:
     print "That isn't a valid option"
     player_one_choose()
@@ -31,7 +31,7 @@ def player_one_choose():
     player_choices[0] = choice
 
 def player_two_choose():
-  choice = raw_input(player_two + ". Rock, paper or scissors?")
+  choice = raw_input(player_two + ". Rock, paper or scissors?: ")
   if choice not in possible_choices:
     print "That isn't a valid option"
     player_two_choose()
