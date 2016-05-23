@@ -2,77 +2,51 @@
 #HW 1 - Rock Paper Scissors
 #Date: 5/9/2016
 #rps.py
-
-print "Name: Joel Shooster"
-print "Section: HW 1 - Rock Paper Scissors"
-print "Date: 5/9/2016"
-print "rps.py"
-
-#This is rock/paper/scissors
 print"Welcome to Rock / Paper / Scissors! Such a fun game!\n"
 
 player_one = raw_input("Player 1 name?: ")
-print "Welcome, ", player_one
-print""
+print "Welcome, ", player_one, "\n"
 
 player_two = raw_input("Player 2 name?: ")
-print "Welcome, ", player_two
-print""
+print "Welcome, ", player_two, "\n"
 
 possible_choices = ['rock', 'paper', 'scissors']
-player_choices = ["", ""]
+player_index = [1, 2]
 
-def player_one_choose():
-  choice = raw_input(player_one + ". Rock, paper or scissors?: ")
+def player_choose(player):
+  name = ""
+  if player == 1:
+    name = player_one
+  else:
+    name = player_two
+
+  choice = raw_input("%s. Rock, paper or scissors?: " % name)
   if choice not in possible_choices:
     print "That isn't a valid option"
-    player_one_choose()
+    player_choose(player)
   else:
-    player_choices[0] = choice
+    player_index[player-1] = choice
 
-def player_two_choose():
-  choice = raw_input(player_two + ". Rock, paper or scissors?: ")
-  if choice not in possible_choices:
-    print "That isn't a valid option"
-    player_two_choose()
-  else:
-    player_choices[1] = choice
+outcome_p1_p2 = {
+  "rock":{
+    "rock": "Tied!",
+    "paper": "%s wins!" % player_two,
+    "scissors": "%s wins!" % player_one
+  },
+  "paper":{
+    "rock": "%s wins!" % player_one,
+    "paper": "Tied!",
+    "scissors": "%s wins!" % player_two
+  },
+  "scissors":{
+    "rock": "%s wins!" % player_two,
+    "paper": "%s wins!" % player_one,
+    "scissors": "Tied!"
+  }
+}
 
-print player_choices
-
-def who_won(n):
-  one = n[0]
-  two = n[1]
-  if one == "rock" and\
-    two == "rock":
-    print "Tied!"
-  elif one == "paper" and\
-    two == "paper":
-    print "Tied!"
-  elif one == "scissors" and\
-    two == "scissors":
-    print "Tied!"
-  elif one == "rock" and\
-    two == "scissors":
-    print player_one, " wins!"
-  elif one == "scissors" and\
-    two == "paper":
-    print player_one, " wins!"
-  elif one == "paper" and\
-    two == "rock":
-    print player_one, " wins!"
-  elif two == "rock" and\
-    one == "scissors":
-    print player_two, " wins!"
-  elif two == "scissors" and\
-    one == "paper":
-    print player_two, " wins!"
-  elif two == "paper" and\
-    one == "rock":
-    print player_two, " wins!"
-
-player_one_choose()
-player_two_choose()
-print player_choices
-who_won(player_choices)
-print""
+player_choose(player_index[0])
+player_choose(player_index[1])
+print player_index
+winner = outcome_p1_p2[player_index[0]][player_index[1]]
+print winner
