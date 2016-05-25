@@ -52,21 +52,8 @@ print "That would return:", me #Expect Joel
 import math
 print "\nBall Collision:\n"
 def ball_collide(ball1, ball2):
-    '''
-    Computes whether or not two balls are colliding
-
-    ball1: a tuple of (x-coord, y-coord, radius) nums (ints or floats);
-        represents first ball
-    ball2: a tuple of (x-coord, y-coord, radius) nums (ints or floats);
-        represents second ball
-
-    returns: True if the balls collide and False if they do not collide
-    '''
-    ##### YOUR CODE HERE #####
     distance = math.sqrt((ball1[0]-ball2[0])**2 + (ball1[1]-ball2[1])**2 )
-    if distance <= ball1[2] + ball2[2]:
-        return True
-    return False
+    return (distance <= ball1[2] + ball2[2])
 
 # Test Cases for Exercise 5.3
 print "ball_collide((0,0,1), (3,3,1)) => Expect False"
@@ -78,9 +65,7 @@ print ball_collide((5, 5, 2), (2, 8, 3)) # Should be True
 print "\nball_collide((7,8,2), (4,4,3))) => Expect True"
 print ball_collide((7, 8, 2), (4, 4, 3)) # Should be True
 
-
 # **********  Exercise 5.4 **********
-
 my_classes = {
     101: "Space Age Engineering with Professor Musk",
     303: "Europa Biology with Dr. Neil deGrasse Tyson"
@@ -147,7 +132,6 @@ def build_addr_book(fileName):
         print "This file was not found."
 
 my_book = build_addr_book("rawAddresses.csv")
-
 
 def change_entry(addr_book, entry, field, newValue):
     addr_book_keys = addr_book.keys()

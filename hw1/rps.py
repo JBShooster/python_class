@@ -14,18 +14,17 @@ possible_choices = ['rock', 'paper', 'scissors']
 player_index = [1, 2]
 
 def player_choose(player):
-  name = ""
-  if player == 1:
-    name = player_one
-  else:
-    name = player_two
-
-  choice = raw_input("%s. Rock, paper or scissors?: " % name)
+  choice = raw_input("%s. Rock, paper or scissors?: " % player).lower()
   if choice not in possible_choices:
     print "That isn't a valid option"
     player_choose(player)
+  elif player == player_one:
+    player_index[0] = choice
+  elif player == player_two:
+    player_index[1] = choice
   else:
-    player_index[player-1] = choice
+    print "That is not a valid player"
+    player_choose(player)
 
 outcome_p1_p2 = {
   "rock":{
@@ -45,8 +44,8 @@ outcome_p1_p2 = {
   }
 }
 
-player_choose(player_index[0])
-player_choose(player_index[1])
+player_choose(player_one)
+player_choose(player_two)
 print player_index
 winner = outcome_p1_p2[player_index[0]][player_index[1]]
 print winner

@@ -1,65 +1,47 @@
 # Name:
 # Section:
 # homework_2.py
-
 ##### Template for Homework 2, exercises 3.1-3.4  ######
-
-
 # **********  Exercise 3.1 **********
-
-# Define your rock paper scissors function here
-##### YOUR CODE HERE #####
 print "Let's place rock, paper, scissors again!\n"
 player_one = raw_input("Player 1 name?: ")
-print "Welcome, ", player_one
-print""
+print "Welcome, ", player_one, "\n"
 
 player_two = raw_input("Player 2 name?: ")
-print "Welcome, ", player_two
-print""
+print "Welcome, ", player_two, "\n"
+
+outcome_p1_p2 = {
+  "rock":{
+    "rock": "Tied!",
+    "paper": "%s wins!" % player_two,
+    "scissors": "%s wins!" % player_one
+  },
+  "paper":{
+    "rock": "%s wins!" % player_one,
+    "paper": "Tied!",
+    "scissors": "%s wins!" % player_two
+  },
+  "scissors":{
+    "rock": "%s wins!" % player_two,
+    "paper": "%s wins!" % player_one,
+    "scissors": "Tied!"
+  }
+}
 
 def rps(user1, user2):
-  one = user1
-  two = user2
-  if one == "rock" and\
-    two == "rock":
-    print "Tied!"
-  elif one == "paper" and\
-    two == "paper":
-    print "Tied!"
-  elif one == "scissors" and\
-    two == "scissors":
-    print "Tied!"
-  elif one == "rock" and\
-    two == "scissors":
-    print player_one, "wins!"
-  elif one == "scissors" and\
-    two == "paper":
-    print player_one, "wins!"
-  elif one == "paper" and\
-    two == "rock":
-    print player_one, "wins!"
-  elif two == "rock" and\
-    one == "scissors":
-    print player_two, "wins!"
-  elif two == "scissors" and\
-    one == "paper":
-    print player_two, "wins!"
-  elif two == "paper" and\
-    one == "rock":
-    print player_two, "wins!"
+  options = ["rock", "paper", "scissors"]
+  if (user1.lower() in options) and (user2.lower() in options):
+    print outcome_p1_p2[user1][user2]
   else:
-    print "Those aren't valid options"
+    print "Those aren't valid options!"
 
 # Test Cases for Exercise 3.1
-##### YOUR CODE HERE #####
 print "rps ('rock', 'paper')"
 rps("rock", "paper") #Player two wins
 print "\nrps ('scissors', 'paper')"
 rps("scissors", "paper") #Player one wins
 print "\nrps ('car', 'rock')"
 rps("car", "rock") #Those aren't valid options!
-print""
 # *********** Exercise 3.2 ***********
 import math
 import random
@@ -72,8 +54,8 @@ print multadd(1,2,3) # =>5
 print"\nmultadd => 2*2 + 2"
 print multadd(2,2,2) # =>6
 print"\nmultadd => 5*10 + 15"
-print multadd(5,10,15) # => 65
-print ""
+print multadd(5,10,15), "\n" # => 65
+
 
 ## 2 - Equations
 
@@ -90,8 +72,7 @@ print angle_test
 print"\nCeiling test:"
 ceiling_test = multadd(1,math.ceil(276/19.0),2*math.log(12,7))
 print "ceiling(276/19) + 2 log_7(12) is:"
-print ceiling_test
-print""
+print ceiling_test, "\n"
 
 ## 3 - yikes function
 def yikes(n):
@@ -110,11 +91,10 @@ print "yikes(5) =", yikes(x), "\n"
 def rand_divis_3():
   num = random.randint(0,10000)
   print "Randomly chosen from 0 - 10000: ", num
-  if num%3 ==0:
+  if num % 3 == 0:
     print "Divisible by three!\n"
   else:
     print "Not divisible by three :-(\n"
-
 
 # Test Cases
 rand_divis_3()
@@ -123,18 +103,12 @@ rand_divis_3()
 
 ## 2 - roll_dice function - remember that a die's lowest number is 1;
                             #its highest is the number of sides it has
-
-# a = numbers of sides
-# b = times we roll the dice
-def roll_dice(a,b):
-  count = b
-  print "\nRolling a %d sided dice, %d times" % (a, b)
+def roll_dice(dice_sides,count):
+  print "\nRolling a %d sided dice, %d times" % (dice_sides, count)
   while count > 0:
-    print random.randint(1, a)
+    print random.randint(1, dice_sides)
     count = count - 1
-
 
 # Test Cases
 roll_dice(6,3)
 roll_dice(20,5)
-

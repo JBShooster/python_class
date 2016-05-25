@@ -59,7 +59,7 @@ def div_by_two():
     try:
       num = input("Give me something divisible by two: ")
       if num % 2 == 0:
-        print "Yas! Divisible by two!"
+        print "Yes! Divisible by two!"
         #Hey! The homework did ask for it to be witty. Right?
         invalid = False
       elif num == 0:

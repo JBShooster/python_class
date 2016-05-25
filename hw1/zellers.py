@@ -2,14 +2,17 @@
 #5.10.16
 #Zellers.py
 
-print "********** Exercise HW1 Optional - Zellers **********"
+MONTHS = [11,12,1,2,3,4,5,6,7,8,9,10]
+DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
-#The best way to test this program is by first using today's date as the input
-#It should return the day of the week that is today.
+def date_finder(month, day, year, century):
+  part_one = (13*month-1) / 5
+  part_two = year / 4
+  part_three = century / 4
+  part_four = part_one + part_two + part_three + day + year - (2*century)
+  return part_four % 7
 
 def get_info():
-  months = [11, 12,1,2,3,4,5,6,7,8,9,10]
-  days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
   valid = False
   while valid == False:
     try:
@@ -19,7 +22,7 @@ def get_info():
       day = input("Day? ")
       year = input("Year? (XXXX format) ")
       print month
-      if(month >=1) & (month <= 12):
+      if month >=1 and month <= 12:
         valid = True
       else:
         print "That's not a valid selection"
@@ -27,27 +30,19 @@ def get_info():
       print "That's not a valid integer"
 
   print "You are %s %s. You were born %s / %d / %d"  % (first_name, last_name, month, day, year)
-  #
-  month = months[month-1]
+  print "Month: ", month
+  month = MONTHS[month-1]
   year = str(year)
   century = int(year[:2])
   year = int(year[-2:])
-  if (month == 11) | (month == 12):
-    year = year - 1
-  print "Month index: ", month
   print "Century: ", century
   print "Year: ", year
+  if month == 11 or month == 12:
+    year = year - 1
 
-  # Now comes the fun math part. Yay!
-  W = (13*month-1) / 5
-  X = year / 4
-  Y = century / 4
-  Z = W + X + Y + day + year - (2*century)
-  result = Z % 7
-
-  print "\n%s %s was born on a %s" % (first_name, last_name, days[result])
+  result = date_finder(month, day, year, century)
+  print "\n%s %s was born on a %s" % (first_name, last_name, DAYS[result])
 
 print "We will return the day of the week in which you were born"
 print "Sunday is 0, Monday is 1, Tuesday is 2, etc..."
 get_info()
-

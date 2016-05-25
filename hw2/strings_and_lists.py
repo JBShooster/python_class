@@ -1,17 +1,13 @@
 # Name:
 # Section:
 # strings_and_lists.py
-
 # **********  Exercise 4.1 **********
-
 def sum_all(number_list):
     # number_list is a list of numbers
     total = 0
     for num in number_list:
         total += num
-
     return total
-
 # Test cases
 print "sum_all of [4, 3, 6] is:", sum_all([4, 3, 6])
 print "sum_all of [1, 2, 3, 4] is:", sum_all([1, 2, 3, 4])
@@ -24,7 +20,6 @@ def cumulative_sum(number_list):
     for x in number_list:
         total += x
         sum.append(total)
-
     print sum
 
 #Test Cases
@@ -35,9 +30,7 @@ cumulative_sum([4,3,6])
 print "\ncumulative_sum([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])"
 cumulative_sum([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])
 
-
 # **********  Exercise 4.2 **********
-
 # Write any helper functions you need here.
 # Below function accounts for both HW2 pig-latin and the optional pig-latin add-ons
 
@@ -61,7 +54,6 @@ def pig_latin():
             result.append(word)
     for j in result:
         print j
-
 pig_latin()
 
 # **********  EXTRA! Optional Part 2 *********
